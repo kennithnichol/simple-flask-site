@@ -12,11 +12,11 @@ def thankyou():
     return render_template('thankyou.html')
 
 def write_to_csv(data):
-    with open('database.csv', mode='a') as database:
+    with open('database.csv', mode='a', newline='') as database:
         name = data['name']
         email = data['email']
         message = data['message']
-        csv_writer = csv.writer(database, delimiter=',', newline='', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        csv_writer = csv.writer(database, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow([name, email, message])
 
 @app.route('/submit_form', methods=['POST', 'GET'])
